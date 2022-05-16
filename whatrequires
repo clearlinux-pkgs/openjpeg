@@ -1,4 +1,7 @@
 # This file contains recursive sources that require this package
+compat-poppler-soname112
+compat-poppler-soname117
+compat-webkitgtk-soname40
 darktable
 krita
 opencv
