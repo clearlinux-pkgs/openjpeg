@@ -4,7 +4,7 @@
 #
 Name     : openjpeg
 Version  : 2.5.0
-Release  : 10
+Release  : 11
 URL      : https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 Source0  : https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 Summary  : No detailed summary available
