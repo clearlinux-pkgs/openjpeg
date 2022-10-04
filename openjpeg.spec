@@ -4,7 +4,7 @@
 #
 Name     : openjpeg
 Version  : 2.5.0
-Release  : 12
+Release  : 13
 URL      : https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 Source0  : https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 Summary  : No detailed summary available
@@ -90,17 +90,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656394866
+export SOURCE_DATE_EPOCH=1664918515
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
@@ -110,10 +110,10 @@ export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -march=x86-64-v3 -msse2avx -mtune=skylake "
-export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -march=x86-64-v3 -msse2avx -mtune=skylake "
-export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -march=x86-64-v3 -msse2avx -mtune=skylake "
-export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -march=x86-64-v3 -msse2avx -mtune=skylake "
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -msse2avx -mtune=skylake "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -msse2avx -mtune=skylake "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -msse2avx -mtune=skylake "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -ffat-lto-objects -flto=auto -march=x86-64-v3 -msse2avx -mtune=skylake "
 export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
@@ -123,14 +123,14 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1656394866
+export SOURCE_DATE_EPOCH=1664918515
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjpeg
-cp %{_builddir}/openjpeg-2.5.0/LICENSE %{buildroot}/usr/share/package-licenses/openjpeg/a1a529b822da257f69972ea711df38489e9d4251
-cp %{_builddir}/openjpeg-2.5.0/src/bin/wx/OPJViewer/source/license.txt %{buildroot}/usr/share/package-licenses/openjpeg/28399384e8bacfe952bb12c4c52a9ba009a9c18d
-cp %{_builddir}/openjpeg-2.5.0/thirdparty/astyle/LICENSE.md %{buildroot}/usr/share/package-licenses/openjpeg/3ad29cc31a206b0662eb91917964b82f11b3df16
-cp %{_builddir}/openjpeg-2.5.0/thirdparty/liblcms2/COPYING %{buildroot}/usr/share/package-licenses/openjpeg/f595de201a37b00737678b96b4c4a10d5bc5f6d9
-cp %{_builddir}/openjpeg-2.5.0/thirdparty/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjpeg/783722cebfdeba6fa3b211d6fb18d68cc647feb4
+cp %{_builddir}/openjpeg-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/openjpeg/a1a529b822da257f69972ea711df38489e9d4251 || :
+cp %{_builddir}/openjpeg-%{version}/src/bin/wx/OPJViewer/source/license.txt %{buildroot}/usr/share/package-licenses/openjpeg/28399384e8bacfe952bb12c4c52a9ba009a9c18d || :
+cp %{_builddir}/openjpeg-%{version}/thirdparty/astyle/LICENSE.md %{buildroot}/usr/share/package-licenses/openjpeg/3ad29cc31a206b0662eb91917964b82f11b3df16 || :
+cp %{_builddir}/openjpeg-%{version}/thirdparty/liblcms2/COPYING %{buildroot}/usr/share/package-licenses/openjpeg/f595de201a37b00737678b96b4c4a10d5bc5f6d9 || :
+cp %{_builddir}/openjpeg-%{version}/thirdparty/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjpeg/783722cebfdeba6fa3b211d6fb18d68cc647feb4 || :
 pushd clr-build-avx2
 %make_install_v3  || :
 popd
