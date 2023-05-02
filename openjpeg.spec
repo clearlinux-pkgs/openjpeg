@@ -5,7 +5,7 @@
 #
 Name     : openjpeg
 Version  : 2.5.0
-Release  : 16
+Release  : 17
 URL      : https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 Source0  : https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 Summary  : No detailed summary available
@@ -14,7 +14,6 @@ License  : BSD-2-Clause Libpng MIT
 Requires: openjpeg-bin = %{version}-%{release}
 Requires: openjpeg-lib = %{version}-%{release}
 Requires: openjpeg-license = %{version}-%{release}
-Requires: openjpeg-plugins = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : curl-dev
 BuildRequires : doxygen
@@ -75,14 +74,6 @@ Group: Default
 license components for the openjpeg package.
 
 
-%package plugins
-Summary: plugins components for the openjpeg package.
-Group: Default
-
-%description plugins
-plugins components for the openjpeg package.
-
-
 %prep
 %setup -q -n openjpeg-2.5.0
 cd %{_builddir}/openjpeg-2.5.0
@@ -92,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683070659
+export SOURCE_DATE_EPOCH=1683070917
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -125,7 +116,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683070659
+export SOURCE_DATE_EPOCH=1683070917
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjpeg
 cp %{_builddir}/openjpeg-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/openjpeg/a1a529b822da257f69972ea711df38489e9d4251 || :
@@ -141,7 +132,9 @@ pushd clr-build
 popd
 ## install_append content
 mkdir -p %{buildroot}/usr/lib64/
+mkdir -p %{buildroot}/V3/usr/lib64/
 mv %{buildroot}/usr/lib/libopenjp2.so* %{buildroot}/usr/lib64/
+mv %{buildroot}-v3/usr/lib/libopenjp2.so* %{buildroot}/V3/usr/lib64/
 ## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
@@ -162,7 +155,7 @@ mv %{buildroot}/usr/lib/libopenjp2.so* %{buildroot}/usr/lib64/
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib/libopenjp2.so
+/V3/usr/lib64/libopenjp2.so
 /usr/include/openjpeg-2.5/openjpeg.h
 /usr/include/openjpeg-2.5/opj_config.h
 /usr/include/openjpeg-2.5/opj_stdint.h
@@ -171,6 +164,8 @@ mv %{buildroot}/usr/lib/libopenjp2.so* %{buildroot}/usr/lib64/
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libopenjp2.so.2.5.0
+/V3/usr/lib64/libopenjp2.so.7
 /usr/lib64/libopenjp2.so.2.5.0
 /usr/lib64/libopenjp2.so.7
 
@@ -181,8 +176,3 @@ mv %{buildroot}/usr/lib/libopenjp2.so* %{buildroot}/usr/lib64/
 /usr/share/package-licenses/openjpeg/783722cebfdeba6fa3b211d6fb18d68cc647feb4
 /usr/share/package-licenses/openjpeg/a1a529b822da257f69972ea711df38489e9d4251
 /usr/share/package-licenses/openjpeg/f595de201a37b00737678b96b4c4a10d5bc5f6d9
-
-%files plugins
-%defattr(-,root,root,-)
-/V3/usr/lib/libopenjp2.so.2.5.0
-/V3/usr/lib/libopenjp2.so.7
