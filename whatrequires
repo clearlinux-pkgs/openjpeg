@@ -1,6 +1,6 @@
 # This file contains recursive sources that require this package
-compat-webkitgtk-soname40
 darktable
+gdal
 krita
 opencv
 poppler
