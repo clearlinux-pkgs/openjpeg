@@ -1,7 +1,6 @@
 # This file contains recursive sources that require this package
 darktable
 gdal
-krita
 opencv
 poppler
 webkitgtk
