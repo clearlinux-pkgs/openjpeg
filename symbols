@@ -20,6 +20,7 @@ libopenjp2.so.7:opj_bio_inalign
 libopenjp2.so.7:opj_bio_init_dec
 libopenjp2.so.7:opj_bio_init_enc
 libopenjp2.so.7:opj_bio_numbytes
+libopenjp2.so.7:opj_bio_putbit
 libopenjp2.so.7:opj_bio_read
 libopenjp2.so.7:opj_bio_write
 libopenjp2.so.7:opj_calculate_norms
@@ -228,12 +229,8 @@ libopenjp2.so.7:opj_tcd_init_decode_tile
 libopenjp2.so.7:opj_tcd_init_encode_tile
 libopenjp2.so.7:opj_tcd_is_band_empty
 libopenjp2.so.7:opj_tcd_is_subband_area_of_interest
-libopenjp2.so.7:opj_tcd_makelayer
-libopenjp2.so.7:opj_tcd_makelayer_fixed
 libopenjp2.so.7:opj_tcd_marker_info_create
 libopenjp2.so.7:opj_tcd_marker_info_destroy
-libopenjp2.so.7:opj_tcd_rateallocate
-libopenjp2.so.7:opj_tcd_rateallocate_fixed
 libopenjp2.so.7:opj_tcd_reinit_segment
 libopenjp2.so.7:opj_tcd_update_tile_data
 libopenjp2.so.7:opj_tgt_create
